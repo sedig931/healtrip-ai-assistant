@@ -19,22 +19,21 @@ export function aiAgent(
     .at(-1);
 
   if (
-    (lastMessage?.content.includes("chest pain") || 
-    lastMessage?.content.includes("my chest") || 
-    lastMessage?.content.includes("chest") || 
-    lastMessage?.content.includes("ألم شديد في الصدر") ||
-    lastMessage?.content.includes("الم شديد في الصدر") ||
-    lastMessage?.content.includes("ألم في الصدر") ||
-    lastMessage?.content.includes("الم في الصدر") ||
-    lastMessage?.content.includes("الم في صدري") ||
-    lastMessage?.content.includes("ألم الصدر") ||
-    lastMessage?.content.includes("الم الصدر") ||
-    lastMessage?.content.includes("صدر") ||
-    lastMessage?.content.includes("صدري") ||
-    lastMessage?.content.includes("الم صدر")
-  ) &&
+    (lastMessage?.content.includes("chest pain") ||
+      lastMessage?.content.includes("my chest") ||
+      lastMessage?.content.includes("chest") ||
+      lastMessage?.content.includes("ألم شديد في الصدر") ||
+      lastMessage?.content.includes("الم شديد في الصدر") ||
+      lastMessage?.content.includes("ألم في الصدر") ||
+      lastMessage?.content.includes("الم في الصدر") ||
+      lastMessage?.content.includes("الم في صدري") ||
+      lastMessage?.content.includes("ألم الصدر") ||
+      lastMessage?.content.includes("الم الصدر") ||
+      lastMessage?.content.includes("صدر") ||
+      lastMessage?.content.includes("صدري") ||
+      lastMessage?.content.includes("الم صدر")) &&
     (text.includes("yes") ||
-    text.includes("yah") ||
+      text.includes("yah") ||
       text.includes("severe") ||
       text.includes("نعم") ||
       text.includes("نعم") ||
@@ -87,9 +86,10 @@ export function aiAgent(
   if (
     text.includes("cardiologist") ||
     text.includes("cardiology") ||
+    text.includes("heart") ||
     text.includes("قلب") ||
     text.includes("القلب") ||
-     text.includes("قلبي")
+    text.includes("قلبي")
   ) {
     let doctors;
     if (text.includes("dammam")) {
@@ -116,17 +116,21 @@ export function aiAgent(
 
   if (
     text.includes("second opinion") ||
+    text.includes("other opinion") ||
+    text.includes("other") ||
+    text.includes("opinion") ||
+    text.includes("choise") ||
     text.includes("رأي ثان") ||
     text.includes("رأي ثاني") ||
     text.includes("راي ثاني") ||
-    text.includes("رأي آخر")  ||
-    text.includes("راي اخر")  ||
-    text.includes("حل اخر")  ||
-    text.includes("سؤال اخر")  ||
-    text.includes("سؤال")  ||
-    text.includes("استفسار")  ||
-    text.includes("اخر")  ||
-    text.includes("آخر") 
+    text.includes("رأي آخر") ||
+    text.includes("راي اخر") ||
+    text.includes("حل اخر") ||
+    text.includes("سؤال اخر") ||
+    text.includes("سؤال") ||
+    text.includes("استفسار") ||
+    text.includes("اخر") ||
+    text.includes("آخر")
   ) {
     return {
       type: "next_step",
@@ -138,6 +142,8 @@ export function aiAgent(
 
   return {
     type: "clarification",
-    message: isArabic ? "هل يمكنك تقديم المزيد من التفاصيل حول الأعراض وموقعك ؟" : "Could you provide more details about your symptoms and location?",
+    message: isArabic
+      ? "هل يمكنك تقديم المزيد من التفاصيل حول الأعراض وموقعك ؟"
+      : "Could you provide more details about your symptoms and location?",
   };
 }
