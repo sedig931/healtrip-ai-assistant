@@ -19,11 +19,26 @@ export function aiAgent(
     .at(-1);
 
   if (
-    (lastMessage?.content.includes("chest pain") ||
-      lastMessage?.content.includes("ألم شديد في الصدر")) &&
+    (lastMessage?.content.includes("chest pain") || 
+    lastMessage?.content.includes("my chest") || 
+    lastMessage?.content.includes("chest") || 
+    lastMessage?.content.includes("ألم شديد في الصدر") ||
+    lastMessage?.content.includes("الم شديد في الصدر") ||
+    lastMessage?.content.includes("ألم في الصدر") ||
+    lastMessage?.content.includes("الم في الصدر") ||
+    lastMessage?.content.includes("الم في صدري") ||
+    lastMessage?.content.includes("ألم الصدر") ||
+    lastMessage?.content.includes("الم الصدر") ||
+    lastMessage?.content.includes("صدر") ||
+    lastMessage?.content.includes("صدري") ||
+    lastMessage?.content.includes("الم صدر")
+  ) &&
     (text.includes("yes") ||
+    text.includes("yah") ||
       text.includes("severe") ||
       text.includes("نعم") ||
+      text.includes("نعم") ||
+      text.includes("ايوا") ||
       text.includes("شديد"))
   ) {
     const hospitals = searchHospitals();
@@ -38,7 +53,7 @@ export function aiAgent(
               .map((hospital) => `${hospital.name} - ${hospital.city}`)
               .join(", ")}`
         : isArabic
-          ? "هذه الحالة تحتاج إلى عناية عاجلة، ولكن لا يوجد مستشفى طوارئ متاح حاليًا"
+          ? "هذه الحالة تحتاج إلى عناية عاجلة، ولكن لا يوجد مستشفى طوارئ متاح حاليا"
           : "This situation should be treated as urgent, but no emergency hospital is currently available";
 
     return {
@@ -52,8 +67,13 @@ export function aiAgent(
   if (
     text.includes("chest pain") ||
     text.includes("chest") ||
+    text.includes("my chest") ||
     text.includes("ألم في الصدر") ||
     text.includes("ألم بالصدر") ||
+    text.includes("الم بالصدر") ||
+    text.includes("الم في الصدر") ||
+    text.includes("الم في صدري") ||
+    text.includes("صدر") ||
     text.includes("الصدر")
   ) {
     return {
@@ -67,7 +87,9 @@ export function aiAgent(
   if (
     text.includes("cardiologist") ||
     text.includes("cardiology") ||
-    text.includes("قلب")
+    text.includes("قلب") ||
+    text.includes("القلب") ||
+     text.includes("قلبي")
   ) {
     let doctors;
     if (text.includes("dammam")) {
@@ -96,7 +118,14 @@ export function aiAgent(
     text.includes("second opinion") ||
     text.includes("رأي ثان") ||
     text.includes("رأي ثاني") ||
+    text.includes("راي ثاني") ||
     text.includes("رأي آخر")  ||
+    text.includes("راي اخر")  ||
+    text.includes("حل اخر")  ||
+    text.includes("سؤال اخر")  ||
+    text.includes("سؤال")  ||
+    text.includes("استفسار")  ||
+    text.includes("اخر")  ||
     text.includes("آخر") 
   ) {
     return {

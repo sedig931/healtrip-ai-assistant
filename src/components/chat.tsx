@@ -213,7 +213,7 @@ export default function ChatInterface() {
               </button>
             </div>
           </form>
-          {/* disc */}
+          {/*---------attention-------- */}
           <span className="attention-span">{translations[language].attention}</span>
         </div>
       </div>
