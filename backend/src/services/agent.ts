@@ -87,6 +87,7 @@ export function aiAgent(
   if (
     text.includes("cardiologist") ||
     text.includes("cardiology") ||
+    text.includes("heart") ||
     text.includes("قلب") ||
     text.includes("القلب") ||
      text.includes("قلبي")
@@ -100,12 +101,11 @@ export function aiAgent(
       doctors = searchDoctors("Cardiology");
     }
     const message =
-      doctors.length > 0
-        ? `I found ${doctors.length} cardiologists: ${doctors
+      doctors.length > 0 
+        ? `${isArabic ? 'وجدت ' : 'I founde '} ${doctors.length} ${isArabic ? 'أطباء قلب : ' : 'cardiologist : '} ${doctors
             .map((doctor) => `${doctor.name} - ${doctor.city}`)
             .join(", ")}`
-        : "I could not find an available cardiologist";
-
+        :isArabic ? 'لم أتمكن من العثور على طبيب قلب متاح' : "I could not find an available cardiologist";
     return {
       type: "tool_result",
       tool: "searchDoctors",
