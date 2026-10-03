@@ -223,7 +223,7 @@
 @media (max-width: 640px) {
   .chat-container {
     padding: 20px 12px;
-    height: 70%;
+    height: 80%;
   }
 
   .message {
